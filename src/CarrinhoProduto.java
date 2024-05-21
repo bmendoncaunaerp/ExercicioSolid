@@ -2,9 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoProduto {
-    private final List<Produto> produtos = new ArrayList<>();
-    private final Impressora impressora = new ImpressoraTerminal();
-    private final Calculadora calculadora = new Calculadora();
+    // Dependency Inversion
+    private final List<Produto> produtos;
+    private final Impressora impressora;
+    private final Calculadora calculadora;
+
+    public CarrinhoProduto(List<Produto> produtos, Impressora impressora, Calculadora calculadora) {
+        this.produtos = produtos;
+        this.impressora = impressora;
+        this.calculadora = calculadora;
+    }
 
     void adicionar(Produto produto) {
         produtos.add(produto);
@@ -15,10 +22,8 @@ public class CarrinhoProduto {
     }
 
     void calcularTotal() {
+        // Open Closed
         System.out.println(calculadora.calculaTotal(produtos, 10));
     }
-
-    void alteraNome(Produto produto, String novoNome) {
-        produto.setNome(novoNome);
-    }
+    // Single Responsibility
 }

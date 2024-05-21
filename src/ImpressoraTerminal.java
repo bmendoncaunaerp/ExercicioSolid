@@ -7,9 +7,5 @@ public class ImpressoraTerminal implements Impressora {
             System.out.println(produto.getNome());
         }
     }
-
-    @Override
-    public void trocarCartucho() {
-        // não troca cartucho no terminal
-    }
+    // Interface Segregation
 }
